@@ -1,0 +1,14 @@
+services:
+  s3mock:
+    image: adobe/s3mock:3.1.0
+    environment:
+      - initialBuckets=bucket1
+    ports:
+      - 9090:9090
+  sftp:
+    image: atmoz/sftp
+    volumes:
+      - ./storage:/home/foo/upload
+    ports:
+      - "2222:22"
+    command: foo:pass:1001
